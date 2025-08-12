@@ -5,6 +5,7 @@ thus the console is the terminal window (since the code is no longer running in 
 it is a global object instead of a window object --> console.log(global) to see the global object
 it has some common core modules(for the filesystem and operating system)
 it has something called as CommonJS modules(we use the require statement instead of import(different syntax)) instead of ES6 modules
+it is missing some js api's like fetch but we have other stuff to deal with it
 */
 
 // console.log(global);
