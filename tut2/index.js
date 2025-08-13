@@ -1,11 +1,14 @@
+
+
+
+/*
 const fs = require('fs');
 const path = require('path')
 
 
-/* 
-path.join(__dirname, folder_name,file_name)
+//path.join(__dirname, folder_name,file_name)
 
-*/
+
 
 ///READING A FILE
 fs.readFile(path.join(__dirname,'files','starter.txt'),"utf8",(err,data) =>{
@@ -28,16 +31,43 @@ fs.writeFile(path.join(__dirname,'files','reply.txt'),"Nice to meet you",(err)=>
     if(err)
         throw err
     console.log("APPEND COMPLETED")
+
+      //RENAMING A FILE
+      fs.rename(path.join(__dirname,'files','reply.txt'),path.join(__dirname,'files','newReply.txt'),(err)=>{
+    if(err)
+        throw err
+    console.log("RENAME COMPLETED")
+})
+
 })
 })
 
-/*
+
 //APPENDING A FILE (it also creates a new file if the file does not exist) 
 fs.appendFile(path.join(__dirname,'files','test.txt'),"TESTING",(err)=>{
     if(err)
         throw err
     console.log("APPEND COMPLETED")
-}) */
+}) 
+*/
+
+///file operations as promises to avoid call back hell
+
+const fsPromises = require('fs').promises;///importing filesystem promises
+const path = require('path')
+
+const fileOps = async () =>{
+    try{
+        const data = await fsPromises.readFile(path.join(__dirname,'files','starter.txt'),'utf8');
+        console.log(data);
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+}
+fileOps();
+
 
 
 
