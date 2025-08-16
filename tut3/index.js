@@ -12,4 +12,10 @@ For example, if you're building an API with Node.js and making changes to your c
 
 nodemone default looks for index.js , use command in the terminal ---> nodemon
 if you want to use a different file , use nodemon followed by filename (eg. server.js) ---> nodemon server
+
+
+---------------------------------------------------------------------------
+npm init -----> initialized package.json  tells npm what packages to install    
+
 */
+
