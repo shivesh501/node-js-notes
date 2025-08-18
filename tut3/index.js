@@ -1,38 +1,19 @@
-/* NPM MODULES */
+const logEvents = require('./logEvents');
 
-//console.log("testing inside our index.js !")
+const EventEmitter = require('events');
 
-/* 
-npm i nodemon -g
--g ----> installs the package globally
--D ----> installs the package as a dev dependency
+class MyEmitter extends EventEmitter {};
 
-nodemon is a utility that monitors for changes in files within a Node.js application. It automatically restarts your application when it detects any changes, so you don’t have to manually stop and restart your server during development. It saves a lot of time, especially when working on larger projects!
+//initalizing the myEmitter object
+const myEmitter = new MyEmitter();
 
-For example, if you're building an API with Node.js and making changes to your code, nodemon will automatically restart your server every time you save a file, keeping everything in sync.
+// add listener for the log event
+myEmitter.on('log', (msg)=>logEvents(msg));
 
-nodemone default looks for index.js , use command in the terminal ---> nodemon
-if you want to use a different file , use nodemon followed by filename (eg. server.js) ---> nodemon server
-
-
----------------------------------------------------------------------------
-npm init -----> initialized package.json  tells npm what packages to install    
-------------------------------------------------------------------------------
-node_modules contains all the dependencies...
-we create a .gitignore file and list node_modules in it to ensure node_modules is not pushed into the repo(push less data)..
-whenever we clone a repository use command "npm install" , the npm will read package.json file and install all the dependencies in the package.json file
-
------------------------------------------------------------------------------------
-INSIDE THE PACKAGE.JSON DO THISSSS ---->>>
-inside "scripts" add-> 
-"start" : "node index"
-"dev" : "nodemon index"
-//remove the test if needed, now we can use npm start or npm run dev
-
-*/
+setTimeout(() => {
+    //emit event
+    myEmitter.emit('log','Log event emitted!');
+    ///if we have more than one parameter i.e. apart from message we can just add them beside the message
+},2000);
 
 
-const {format} = require('date-fns');   ///npm install -D date-fns 
-const {v4:uuid} = require('uuid') //npm install uuid
-console.log(format(new Date(),'yyyyMMdd\tHH:mm:ss'));
-console.log(uuid())
