@@ -16,6 +16,11 @@ if you want to use a different file , use nodemon followed by filename (eg. serv
 
 ---------------------------------------------------------------------------
 npm init -----> initialized package.json  tells npm what packages to install    
+------------------------------------------------------------------------------
+node_modules contains all the dependencies...
+we create a .gitignore file and list node_modules in it to ensure node_modules is not pushed into the repo(push less data)..
+whenever we clone a repository use command "npm install" , the npm will read package.json file and install all the dependencies in the package.json file
+
 
 */
 
