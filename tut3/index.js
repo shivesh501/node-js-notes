@@ -1,10 +1,11 @@
 /* NPM MODULES */
 
-console.log("testing inside our index.js !")
+//console.log("testing inside our index.js !")
 
 /* 
 npm i nodemon -g
 -g ----> installs the package globally
+-D ----> installs the package as a dev dependency
 
 nodemon is a utility that monitors for changes in files within a Node.js application. It automatically restarts your application when it detects any changes, so you don’t have to manually stop and restart your server during development. It saves a lot of time, especially when working on larger projects!
 
@@ -21,6 +22,17 @@ node_modules contains all the dependencies...
 we create a .gitignore file and list node_modules in it to ensure node_modules is not pushed into the repo(push less data)..
 whenever we clone a repository use command "npm install" , the npm will read package.json file and install all the dependencies in the package.json file
 
+-----------------------------------------------------------------------------------
+INSIDE THE PACKAGE.JSON DO THISSSS ---->>>
+inside "scripts" add-> 
+"start" : "node index"
+"dev" : "nodemon index"
+//remove the test if needed, now we can use npm start or npm run dev
 
 */
 
+
+const {format} = require('date-fns');   ///npm install -D date-fns 
+const {v4:uuid} = require('uuid') //npm install uuid
+console.log(format(new Date(),'yyyyMMdd\tHH:mm:ss'));
+console.log(uuid())
