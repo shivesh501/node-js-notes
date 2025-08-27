@@ -1,4 +1,5 @@
-const {Console} = require('console');
+// const {Console} = require('console');
+const fs = require('fs');
 
 const http = require('http');
 const port = process.env.PORT || 3900;
@@ -6,16 +7,22 @@ const server = http.createServer((request,response)=>{
     console.log(request.url)
      response.setHeader('Content-type','text/html');
   
-    if(request.url === '/')
+    if(request.url === '/about')
     {
          response.statusCode = 200;
     response.end('<h1>this is our http page</h1><p>this is  a paragraph</p>');
     }
-    else if(request.url === '/about')
+    else if(request.url === '/')
     {
-        
+        const data = fs.readFileSync('./index.html')
           response.statusCode = 200;
-    response.end('<h1>this is our http ABOUTpage</h1><p>this is  a paragraph in ABOUT PAGE</p>');
+    response.end(data.toString());
+    }
+    else if(request.url == '/link')
+    {
+        const data = fs.readFileSync('./Link.html')
+        response.statusCode = 200;
+        response.end(data);
     }
     else
     {
