@@ -1,0 +1,18 @@
+{{!-- we can render different parts of the index.html by placing the components in different files inside a partials folder --}}
+{{!-- specify the partials folder using the partialsDir property inside app.js  --}}
+<h2>list of best fruits</h2>
+{{> bestfruits}}
+
+<h2>list of worst fruits</h2>
+{{> worstfruits}}
+
+<h2>Displaying dynamic values using helper blocks (iterators)</h2>
+{{#if listExists}}  
+{{!-- conditional helper block --}}
+<ul>
+    {{#each helperblock}}
+    <li class={{this.id}}>{{this.name}}</li>
+    {{/each}}
+    {{!-- iterator helper block --}}
+</ul>
+{{/if}}
